@@ -1,0 +1,39 @@
+<app-banner></app-banner>
+
+<div class="container block">
+  <h2>
+    Cho thuê Bất động sản
+  </h2>
+  <div class="row">
+    @for (item of motels; track item.name) {
+
+    <div *ngIf="item.status == 0" class="col-4 box"  >
+      <a href="/bai-dang/{{item.id}}">
+        <div>
+          <img src="https://localhost:7202{{item.images}}" alt="phong" width="250px" height="250px">
+        </div>
+        <div class="body">
+          <div class="title">
+            {{item.title}}
+          </div>
+          <div class="acreage">
+            {{item.acreage}} m<sup>2</sup>
+          </div>
+          <div>
+            <span class="deposit">
+              {{item.deposit}} triệu/tháng
+            </span>
+
+          </div>
+        </div>
+        <div class="footer">
+
+        </div>
+      </a>
+    </div>
+    } @empty {
+    <li>There are no items.</li>
+    }
+  </div>
+
+</div>

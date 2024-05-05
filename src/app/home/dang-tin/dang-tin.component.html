@@ -1,0 +1,37 @@
+<div class="home">
+  <app-banner></app-banner>
+  <div class="container block">
+    <h5>Địa chỉ BĐS</h5>
+    <div class="mb-4 col-12 columns">
+      <input name="name" [(ngModel)]="model.name" class="form-control me-2" type="text"
+        placeholder="Tên tòa/ Khu dân cư">
+      <input name="city" [(ngModel)]="model.city" class="form-control me-2" type="text" placeholder="Thành phố">
+    </div>
+    <div class="mb-4 col-12 columns">
+      <input name="address" [(ngModel)]="model.address" class="form-control me-2" type="text" placeholder="Địa chỉ">
+    </div>
+    <h5>Thông tin chi tiết</h5>
+    <div class="mb-4 col-12 columns">
+      <input name="numberBedRoom" [(ngModel)]="model.numberBedRoom" class="form-control me-2" type="number"
+        placeholder="Số phòng ngủ">
+      <input name="numberBathRoom" [(ngModel)]="model.numberBathRoom" class="form-control me-2" type="number"
+        placeholder="Số nhà vệ sinh">
+      <input name="acreage" [(ngModel)]="model.acreage" class="form-control me-2" type="number"
+        placeholder="Diện tích (m2)">
+      <input name="deposit" [(ngModel)]="model.deposit" class="form-control me-2" type="number" placeholder="Giá thuê">
+    </div>
+    <h5>Tiêu đề tin đăng và Mô tả chi tiết</h5>
+    <div class="mb-4 col-12 columns">
+      <input name="title" [(ngModel)]="model.title" class="form-control me-2" type="text"
+        placeholder="Tiêu đề đăng tin">
+    </div>
+    <div class="mb-4 col-12 columns">
+      <textarea rows="6" cols="50" name="descriptions" [(ngModel)]="model.descriptions" class="form-control me-2"
+        type="textare" placeholder="Mô tả chi tiết"></textarea>
+    </div>
+    <div class="mb-4 col-12 columns">
+      <input type="file" (change)="handleUpload($event)">
+    </div>
+    <button class="btn btn-outline-success" (click)="createMotel()" >Đăng tin</button>
+  </div>
+</div>
