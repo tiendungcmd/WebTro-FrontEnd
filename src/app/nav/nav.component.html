@@ -23,8 +23,9 @@
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome {{userName}}
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" (click)="editProfile()">Edit Profile</a></li>
-        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        <li *ngIf="!isAdmin"><a class="dropdown-item" (click)="trangCaNhan()">Cá nhân</a></li>
+        <li *ngIf="!isAdmin"><a class="dropdown-item" (click)="baiDang()">Bài đăng</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Đăng xuất</a></li>
       </ul>
     </div>
 
@@ -32,9 +33,9 @@
       <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="UserName">
       <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
         placeholder="PassWord">
-      <button class="btn btn-outline-success" type="submit">Login</button>
+      <button class="btn btn-outline-success" type="submit">Đăng nhập</button>
       <button style="margin-left: 5px;" class="btn btn-outline-success">
-        <a class="nav-link " routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link " routerLink="/register" routerLinkActive="active">Đăng kí</a>
       </button>
     </form>
   </div>

@@ -1,0 +1,27 @@
+.block{
+  margin-top: 70px;
+ }
+
+tbody{
+  background-color: white;
+}
+td,th{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+button>btn{
+  width: 35%;
+}
+.deposit {
+  font-weight: 700;
+  color: #d0021b
+}
+.modal-dialog{
+  max-width: 70%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

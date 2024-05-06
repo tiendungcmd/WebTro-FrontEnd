@@ -6,22 +6,101 @@
     <div class="col-8">
       <div>
         <div class="image">
-          <img src="https://localhost:7202{{motel.images}}" alt="phong" width="100px" height="80px">
+          <img src="https://localhost:7202{{motel?.images}}" alt="phong" width="100%" height="455px">
         </div>
         <div class="title">
-
+          <h1 class="title-h1">{{motel?.title}}</h1>
         </div>
         <div class="detail">
-
+          <div>
+            <span class="price">{{motel?.deposit}} triệu/tháng</span>
+            <span class="acreage">- {{motel?.acreage}} m<sup>2</sup></span>
+          </div>
+          <div class="addrres">
+            <div>
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <div class="address-v2">
+              {{motel?.address}}
+            </div>
+          </div>
         </div>
+        <div>
+          <div class="title-des">
+            Mô tả chi tiết
+          </div>
+          <div class="desciption">
+            {{motel?.descriptions}}
+          </div>
+          <a href="/">
+            Xem các bài viết khác
+          </a>
+        </div>
+
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-4 position-sticky">
       <div class="profile">
-
+        <div class="role">
+          <div class="avatar"></div>
+        </div>
+        <div class="sellerProfile">
+          <div class="username">
+            <b>
+              {{motel?.userName}}
+            </b>
+          </div>
+          <div class="role-seller">
+            <i class="bi bi-bag"></i>Môi giới
+          </div>
+        </div>
       </div>
       <div class="chat">
+        <div class="contact">
+          Liên hệ với người bán
+        </div>
+        <div class="showButton" (click)="showPhone()">
+          <span>
+            <i class="bi bi-telephone"></i>
+            {{hidePhone}}
+          </span>
+          <span *ngIf="hiddenPhone">
+            BẤM ĐỂ HIỆN SỐ
+          </span>
 
+        </div>
+
+        <div class="comment">
+          <form class="false LeadManagementPty_hiddenOnTablet__4rvXb LeadManagementPty_formStyle___ZO8W">
+            <p class="LeadManagementPty_titleText__AgUPC">Bạn cần tư vấn thêm?</p>
+            <p>Để lại thông tin để người đăng tin liên hệ với bạn ngay.</p>
+            <div class="LeadManagementPty_inputSection__h2mNm">
+              <div class="LeadManagementPty_inputInfoSection__0Ll3k">
+                <div class="c1unfyfl" style="--c1unfyfl-0: 100%;">
+                  <div class="i181f3jq" style="--i181f3jq-0: 48px;"><input class="i160o3xm i1aobgdp required"
+                      type="text" inputmode="text" id="" name="fullname" placeholder="Họ và tên" value=""></div>
+                  <p class="pbhavly"></p>
+                </div>
+                <div class="c1unfyfl" style="--c1unfyfl-0: 100%;">
+                  <div class="i181f3jq" style="--i181f3jq-0: 48px;"><input class="i160o3xm i1aobgdp required"
+                      type="number" inputmode="text" id="" name="phone" placeholder="Số điện thoại" value=""></div>
+                  <p class="pbhavly"></p>
+                </div>
+              </div>
+              <div class="c1i6o3zw" style="--c1i6o3zw-0: 100%;">
+                <div class="tzd64ni" style="--tzd64ni-0: 76px;">
+                  <div class="focus-capture"></div>
+                  <textarea class="soh0ba3" inputmode="text" name="note" maxlength="100"></textarea>
+                  <label for="">Thêm lời nhắn (100 kí tự)</label>
+                </div>
+                <p class="pc2folk"></p>
+              </div>
+            </div>
+            <div class="LeadManagementPty_footerSection__zigt0">
+              <button class="b1vy8ms accent r-normal large w-bold stretch disabled" disabled="">Gửi thông tin</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

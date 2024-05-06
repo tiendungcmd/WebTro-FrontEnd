@@ -47,7 +47,10 @@ export class NavComponent {
     this.router.navigateByUrl('/')
   }
 
-  editProfile(){
+  trangCaNhan(){
     this.router.navigateByUrl('trang-ca-nhan')
+  }
+  baiDang(){
+    this.router.navigateByUrl('quan-ly')
   }
 }

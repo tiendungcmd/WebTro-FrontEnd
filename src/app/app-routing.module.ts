@@ -8,6 +8,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { ProfileComponent } from './home/profile/profile.component';
 import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
 import { BaiDangComponent } from './home/bai-dang/bai-dang.component';
+import { QuanLyBaiDangUserComponent } from './home/quan-ly-bai-dang-user/quan-ly-bai-dang-user.component';
 
 const routes: Routes = [
   {
@@ -18,19 +19,27 @@ const routes: Routes = [
     path: '',
    // component: HomeComponent,
     runGuardsAndResolvers: 'always',
-    canActivate:[AuthGuard],
+
     children:[
       {
         path: 'dang-tin',
         component: DangTinComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'tin-tuc',
-        component: DangTinComponent,
+        component: HomeComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'trang-ca-nhan',
         component: ProfileComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path: 'quan-ly',
+        component: QuanLyBaiDangUserComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'bai-dang/:id',

@@ -1,0 +1,138 @@
+<div class="container block">
+  <h5>Danh sách bài đăng</h5>
+  <p-table [value]="motelResponses" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Title</th>
+        <th>Giá thuê</th>
+        <th>Ảnh</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-motelResponse>
+      <tr>
+        <td class="col-3"><a href="/bai-dang/{{motelResponse.id}}">{{ motelResponse.title }}</a> </td>
+        <td class="deposit"> {{ motelResponse.deposit }} triệu/tháng</td>
+        <td><img src="https://localhost:7202{{motelResponse.images}}" alt="phong" width="100px" height="80px"> </td>
+        <td *ngIf="motelResponse.status == 2">
+          <button class="btn btn-primary" disabled style="
+          border-radius: 10px;">
+            Đợi phê duyệt
+          </button>
+        </td>
+        <td *ngIf="motelResponse.status == 0">
+          <button class="btn btn-success" disabled style="
+          border-radius: 10px;">
+            Đã cho thuê/bán
+          </button>
+        </td>
+        <td *ngIf="motelResponse.status == 3">
+          <button class="btn btn-outline-success" disabled style="
+          border-radius: 10px;">
+            Đang đăng
+          </button>
+        </td>
+        <td *ngIf="motelResponse.status == 1">
+          <button class="btn btn-danger" style="
+          border-radius: 10px;" data-toggle="tooltip" data-placement="top" title=" Lý do: {{motelResponse.reason}}">
+            <i class="bi bi-info-circle"></i>
+            Từ chối phê duyệt
+          </button>
+        </td>
+        <!-- action -->
+        <td>
+          <button class="btn btn-primary" style="
+            border-radius: 10px;" (click)="hired(motelResponse.id)" *ngIf="motelResponse.status == 3">
+            <i class="bi bi-check2-circle"></i>
+            Đã thuê
+          </button>
+          <button class="btn btn-warning" style="
+            border-radius: 10px;" data-bs-toggle="modal" data-bs-target="#myModal"
+            (click)="detailMotel(motelResponse.id)" *ngIf="motelResponse.status == 2|| motelResponse.status == 1">
+            <i class="bi bi-pencil-square"></i>
+            Chỉnh sửa
+          </button>
+          <button class="btn btn-info" style="
+            border-radius: 10px;" (click)="detailMotel(motelResponse.id)" *ngIf="motelResponse.status == 0" >
+            <i class="bi bi-info-circle"></i> Chi tiết
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class="container">
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Chỉnh sửa bài đăng:</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-8">
+              <div class="">
+                <h5>Địa chỉ BĐS</h5>
+                <div class="mb-4 col-12 columns">
+                </div>
+                <div class="mb-4 col-12 columns">
+                  Thành phố:
+                  <input name="city" [(ngModel)]="model.city" class="form-control me-2" type="text"
+                    placeholder="Thành phố">
+                </div>
+
+                <div class="mb-4 col-12 columns">
+                  Địa chỉ:
+                  <input name="address" [(ngModel)]="model.address" class="form-control me-2" type="text"
+                    placeholder="Địa chỉ">
+                </div>
+                <h5>Thông tin chi tiết</h5>
+                <div style="display: flex;">
+                  <div class="mb-4 col-4 columns">
+                    Số phòng ngủ:
+                    <input name="numberBedRoom" [(ngModel)]="model.numberBedRoom" class="form-control me-2" type="number"
+                      placeholder="Số phòng ngủ">
+                    Số nhà vệ sinh:
+                    <input name="numberBathRoom" [(ngModel)]="model.numberBathRoom" class="form-control me-2"
+                      type="number" placeholder="Số nhà vệ sinh">
+                  </div>
+                  <div class="mb-4 col-4 columns" style="margin-left: 10px;">
+                    Diện tích (m2):
+                    <input name="acreage" [(ngModel)]="model.acreage" class="form-control me-2" type="number"
+                      placeholder="Diện tích (m2)">
+                    Giá thuê:
+                    <input name="deposit" [(ngModel)]="model.deposit" class="form-control me-2" type="number"
+                      placeholder="Giá thuê">
+                  </div>
+                </div>
+
+                <h5>Tiêu đề tin đăng và Mô tả chi tiết</h5>
+                <div class="mb-4 col-12 columns">
+                  <input name="title" [(ngModel)]="model.title" class="form-control me-2" type="text"
+                    placeholder="Tiêu đề đăng tin">
+                </div>
+                <div class="mb-4 col-12 columns">
+                  <textarea rows="6" cols="50" name="descriptions" [(ngModel)]="model.descriptions"
+                    class="form-control me-2" type="textare" placeholder="Mô tả chi tiết"></textarea>
+                </div>
+                <div class="mb-4 col-12 columns">
+                  <input type="file" (change)="readURL($event)">
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <img *ngIf="showimage" src="https://localhost:7202{{model.images}}" alt="phong" width="250px" height="180px">
+              <img *ngIf="!showimage" id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" width="250px" height="180px"/>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-success" data-bs-dismiss="modal"  (click)="createMotel()">Cập nhật</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

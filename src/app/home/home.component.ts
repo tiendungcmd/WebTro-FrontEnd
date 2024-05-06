@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       imgAlt:'image 3'
     }]
 
-    this.motelService.getMotel().subscribe(res=>{
+    this.motelService.getMotel("").subscribe(res=>{
       if(res.success){
         this.motels = res.data;
       }

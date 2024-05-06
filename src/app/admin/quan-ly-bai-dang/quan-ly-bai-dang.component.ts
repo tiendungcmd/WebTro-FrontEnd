@@ -15,7 +15,7 @@ export class QuanLyBaiDangComponent implements OnInit {
   constructor(private motelService: MotelService,private toastrService: ToastrService) {
   }
   ngOnInit(): void {
-    this.motelService.getMotel().subscribe(res=>{
+    this.motelService.getMotel(null).subscribe(res=>{
       this.motelResponses = res.data;
     });
   }
@@ -24,7 +24,7 @@ export class QuanLyBaiDangComponent implements OnInit {
       if(res.success){
         this.toastrService.success("Phê duyệt thành công!");
 
-        this.motelService.getMotel().subscribe(res=>{
+        this.motelService.getMotel("").subscribe(res=>{
           this.motelResponses = res.data;
         });
       }
@@ -48,7 +48,7 @@ export class QuanLyBaiDangComponent implements OnInit {
       if(res.success){
         this.toastrService.success("Từ chối bài đăng!");
 
-        this.motelService.getMotel().subscribe(res=>{
+        this.motelService.getMotel("").subscribe(res=>{
           this.motelResponses = res.data;
         });
       }
@@ -60,7 +60,7 @@ export class QuanLyBaiDangComponent implements OnInit {
       if(res.success){
         this.toastrService.success("Xóa bài đăng thành công!");
 
-        this.motelService.getMotel().subscribe(res=>{
+        this.motelService.getMotel("").subscribe(res=>{
           this.motelResponses = res.data;
         });
       }

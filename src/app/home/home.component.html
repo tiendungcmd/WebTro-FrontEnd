@@ -7,7 +7,7 @@
   <div class="row">
     @for (item of motels; track item.name) {
 
-    <div *ngIf="item.status == 0" class="col-4 box"  >
+    <div *ngIf="item.status == 3" class="col-4 box"  >
       <a href="/bai-dang/{{item.id}}">
         <div>
           <img src="https://localhost:7202{{item.images}}" alt="phong" width="250px" height="250px">

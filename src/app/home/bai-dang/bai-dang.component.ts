@@ -10,6 +10,9 @@ import { MotelService } from '../../service/motel.service';
 export class BaiDangComponent implements OnInit {
   id: any;
   motel: any;
+  phone: any;
+  hidePhone: string = '09***';
+  hiddenPhone: boolean = true;
   constructor(private route: ActivatedRoute, private motelService: MotelService) {
 
   }
@@ -19,8 +22,13 @@ export class BaiDangComponent implements OnInit {
     this.motelService.getMotelById(this.id).subscribe(res => {
       if (res.success) {
         this.motel = res.data;
+        this.phone = res.data.userPhone;
       }
     });
+  }
 
+  showPhone() {
+    this.hidePhone = this.phone;
+    this.hiddenPhone = false;
   }
 }
