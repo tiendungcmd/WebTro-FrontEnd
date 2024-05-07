@@ -43,6 +43,15 @@
   align-items: center;
   margin-bottom: 4px;
 }
+.number{
+  align-items: start;
+  line-height: 22px;
+  font-size: 14px;
+  color: #777;
+  font-weight: 400;
+  align-items: center;
+  margin-bottom: 4px;
+}
 
 .address-v2 {
   cursor: pointer;
@@ -300,4 +309,20 @@ i:hover{
   cursor: pointer;
   background-color: #c7c5c5;
   border-radius: 50%;
+}
+.AdParam_adParamItemVeh__mCpPS {
+  font-size: 13px;
+  flex-basis: 50%;
+  margin: 8px 0;
+  min-height: 24px;
+}
+.AdParam_adMediaParam__3epxo {
+  display: flex;
+  align-items: start;
+}
+.AdParam_adParamItemVeh__mCpPS span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }

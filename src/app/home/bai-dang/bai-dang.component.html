@@ -24,6 +24,30 @@
               {{motel?.address}}
             </div>
           </div>
+          <!-- <div class="col-xs-6 no-padding AdParam_adParamItemVeh__mCpPS" data-testid="param-item">
+            <div class="AdParam_adMediaParam__3epxo">
+               <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Số phòng vệ sinh" src="https://static.chotot.com/storage/icons/logos/ad-param/toilets.png"></div>
+               <div class="media-body media-middle"><span><span>Số phòng vệ sinh: </span><span itemprop="toilets" class="AdParam_adParamValue__IfaYa">2 phòng</span></span></div>
+            </div>
+         </div> -->
+          <div class="number">
+            <div class="address-v2">
+              <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Số phòng vệ sinh"
+                  src="https://static.chotot.com/storage/icons/logos/ad-param/toilets.png"
+                  style="width:20px;height: 20px;">
+                Số nhà vệ sinh: {{motel?.address}} phòng
+              </div>
+            </div>
+          </div>
+          <div class="number">
+            <div class="address-v2">
+              <div class="media-left media-top"><img class="AdParam_adParamIcon__m87Vj" alt="Số phòng vệ sinh"
+                  src="https://static.chotot.com/storage/icons/logos/ad-param/rooms.png"
+                  style="width:20px;height: 20px;">
+                Số phòng ngủ: {{motel?.address}} phòng
+              </div>
+            </div>
+          </div>
         </div>
         <div>
           <div class="title-des">
@@ -77,7 +101,8 @@
               <div class="LeadManagementPty_inputInfoSection__0Ll3k">
                 <div class="c1unfyfl" style="--c1unfyfl-0: 100%;">
                   <div class="i181f3jq" style="--i181f3jq-0: 48px;"><input class="i160o3xm i1aobgdp required"
-                      type="text" inputmode="text" id="" name="fullname" placeholder="Họ và tên" value="" [(ngModel)]="comment.userName"></div>
+                      type="text" inputmode="text" id="" name="fullname" placeholder="Họ và tên" value=""
+                      [(ngModel)]="comment.userName"></div>
                   <p class="pbhavly"></p>
                 </div>
                 <!-- <div class="c1unfyfl" style="--c1unfyfl-0: 100%;">
@@ -89,19 +114,21 @@
               <div class="c1i6o3zw" style="--c1i6o3zw-0: 100%;">
                 <div class="tzd64ni" style="--tzd64ni-0: 76px;">
                   <div class="focus-capture"></div>
-                  <textarea class="soh0ba3" inputmode="text" name="note" maxlength="100" [(ngModel)]="comment.description"></textarea>
+                  <textarea class="soh0ba3" inputmode="text" name="note" maxlength="100"
+                    [(ngModel)]="comment.description"></textarea>
                   <label for="">Thêm lời nhắn (100 kí tự)</label>
                 </div>
                 <p class="pc2folk"></p>
               </div>
             </div>
             <div class="LeadManagementPty_footerSection__zigt0">
-              <button class="btn btn-outline-success accent r-normal large w-bold stretch" (click)="sendComment()">Gửi thông tin</button>
+              <button class="btn btn-outline-success accent r-normal large w-bold stretch" (click)="sendComment()">Gửi
+                thông tin</button>
             </div>
           </form>
         </div>
 
-        <div class="listComment" >
+        <div class="listComment">
           <p class="LeadManagementPty_titleText__AgUPC">Đánh giá: </p>
           <div *ngFor="let item of comments" style="margin-top:10px">
             <div class="sellerProfile">
@@ -112,9 +139,9 @@
                 {{item.descriptions}}
                 <i class="bi bi-x" (click)="deleteComment(item.id)" *ngIf="isAdmin"></i>
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
