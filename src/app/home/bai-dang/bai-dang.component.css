@@ -293,3 +293,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.listComment{
+  margin-top: 20px;
+}
+i:hover{
+  cursor: pointer;
+  background-color: #c7c5c5;
+  border-radius: 50%;
+}

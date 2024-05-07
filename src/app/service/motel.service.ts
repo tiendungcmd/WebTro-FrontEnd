@@ -91,4 +91,15 @@ export class MotelService {
     return this.http.get<any>(this.baseUrl + 'motel/' + id);
   }
 
+  sendComment(comment:any){
+    return this.http.post<any>(this.baseUrl + 'motel/comment',comment);
+  }
+
+  getComment(id:any){
+    return this.http.get<any>(this.baseUrl + 'motel/comment?id='+id);
+  }
+
+  deleteComment(id:any){
+    return this.http.delete<any>(this.baseUrl + 'motel/comment?id='+id);
+  }
 }

@@ -29,4 +29,24 @@ export class AccountService {
   getCurrentUser(): Observable<any> {
     return this.currentUserSource.asObservable();
   }
+
+  getProfile(request: any): Observable<any>  {
+    return this.http.get<User>(this.baseUrl + 'auth/profile?userName=' + request);
+  }
+
+  updateProfile(request: any): Observable<any>  {
+    return this.http.post<User>(this.baseUrl + 'auth/profile', request);
+  }
+
+  getListUser() : Observable<any> {
+    return this.http.get<User>(this.baseUrl + 'auth');
+  }
+
+  lockUser(id:any): Observable<any> {
+    return this.http.post<User>(this.baseUrl + 'auth/lockAccount?id='+id,"");
+  }
+
+  resetPassword(id:any): Observable<any> {
+    return this.http.post<User>(this.baseUrl + 'auth/resetPassword?id='+id,"");
+  }
 }

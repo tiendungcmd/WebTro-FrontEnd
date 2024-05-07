@@ -1,6 +1,96 @@
 <div class="home">
   <div class="container block">
     <h5>Địa chỉ BĐS</h5>
+    <div class="">
+      <div class="row">
+        <div class="col-lg-12 mb-4 mb-sm-5">
+          <div class="card card-style1 border-0">
+            <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" *ngIf="profile?.sex == 0">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
+                </div>
+                <div class="col-lg-6 mb-4 mb-lg-0" *ngIf="profile?.sex == 1">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="...">
+                </div>
+                <div class="col-lg-6 px-xl-10">
+                  <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                    <h3 class="h2 text-white mb-0">{{profile?.name || ("undefined")}}</h3>
+                  </div>
+                  <ul class="list-unstyled mb-1-9">
+                    <li class="mb-2 mb-xl-3 display-28" *ngIf="profile.sex == 0 "><span
+                        class="display-26 text-secondary me-2 font-weight-600">Giới tính:</span> Nam</li>
+                    <li class="mb-2 mb-xl-3 display-28" *ngIf="profile.sex == 1 "><span
+                        class="display-26 text-secondary me-2 font-weight-600">Giới tính:</span> Nữ</li>
+                    <li class="mb-2 mb-xl-3 display-28"><span
+                        class="display-26 text-secondary me-2 font-weight-600">Ngày sinh:</span> {{profile.birthDay |
+                      date:'mediumDate'}}</li>
+                    <li class="display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
+                      {{profile.phone}}</li>
+                    <li class="display-28"><button class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#myModal" style="margin-top:5px">Cập nhật thông tin</button></li>
+                    <!-- <li class="display-28"><button class="btn btn-outline-success" style="margin-top:5px">Đổi mật khẩu</button></li> -->
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 mb-4 mb-sm-5">
+          <div>
+            <span class="section-title text-primary mb-3 mb-sm-4">About Me</span>
+            <p>Đây là thông tin cá nhân, mọi người có thể xem thông tin và liên hệ lại cho mình</p>
+            <p class="mb-0">Một thực tế đã được chứng minh từ lâu là người đọc sẽ bị phân tâm bởi nội dung có thể đọc
+              được của một trang khi nhìn vào bố cục của nó.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
+<div class="container">
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Cập nhật thông tin:</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" style="display: flex;">
+          <div class="mb-4 col-6 columns">
+            <input [(ngModel)]="profile.name" class="form-control me-2" type="text" placeholder="Họ và tên">
+          </div>
+          <div class="mb-4 col-6 columns">
+            <input [(ngModel)]="profile.phone" class="form-control me-2" type="number" placeholder="Số điện thoại">
+          </div>
+        </div>
+        <div class="modal-body" style="display: flex;">
+          <div class="mb-4 col-6 columns">
+            <input [(ngModel)]="profile.cccd" class="form-control me-2" type="number" placeholder="Căn cước công dân">
+          </div>
+          <div class="mb-4 col-6 columns">
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="profile.sex"  >
+                <option type="number" value=1 selected="profile?.sex ==1">Nữ</option>
+                <option type="number" value=0 selected="profile?.sex ==0">Nam</option>
+              </select>
+            </div>
+            <!-- <input name="address" [(ngModel)]="profile.sex" class="form-control me-2" type="text"
+              placeholder="Giới tính"> -->
+          </div>
+        </div>
+        <div class="modal-body" style="display: flex;">
+          <div class="mb-4 col-6 columns">
+            <input [(ngModel)]="profile.birthDay"  class="form-control me-2"  type="datetime-local" placeholder="Ngày sinh">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateProfile()">Cập
+            nhật</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

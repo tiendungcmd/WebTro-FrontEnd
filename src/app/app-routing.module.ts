@@ -54,6 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate:[AuthGuard],
     children:[
       {
         path: 'quan-ly-bai-dang',

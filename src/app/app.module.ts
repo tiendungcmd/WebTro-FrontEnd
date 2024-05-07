@@ -21,7 +21,7 @@ import { TableModule } from 'primeng/table';
 import { BaiDangComponent } from './home/bai-dang/bai-dang.component';
 import { QuanLyBaiDangUserComponent } from './home/quan-ly-bai-dang-user/quan-ly-bai-dang-user.component';
 import { QuanLyTaiKhoanComponent } from './admin/quan-ly-tai-khoan/quan-ly-tai-khoan.component';
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,8 @@ import { QuanLyTaiKhoanComponent } from './admin/quan-ly-tai-khoan/quan-ly-tai-k
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    TableModule
+    TableModule,
+    DatePipe
   ],
   providers: [
     {

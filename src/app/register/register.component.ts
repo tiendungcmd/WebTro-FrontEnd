@@ -29,7 +29,7 @@ export class RegisterComponent {
         // as well as the time when it's supposed to expire
         const item = {
           value: res.userName,
-          expiry: now.getTime() + 5000,
+          expiry: now.getTime() + 5000000,
         }
         localStorage.setItem('user', JSON.stringify(item))
        // localStorage.setItem('user', JSON.stringify(res.userName));

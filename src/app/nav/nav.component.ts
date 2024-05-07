@@ -18,7 +18,7 @@ export class NavComponent {
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.currentUser$ = this.getKey('user');
-   if(this.currentUser$.includes('admin')) {
+   if(this.currentUser$ &&  this.currentUser$.includes('admin')) {
     this.isAdmin = true;
    }
    this.userName = this.getKey('user');
@@ -37,7 +37,7 @@ export class NavComponent {
         // as well as the time when it's supposed to expire
         const item = {
           value: res.data.userName,
-          expiry: now.getTime() + 5000,
+          expiry: now.getTime() + 5000000,
         }
         localStorage.setItem('user', JSON.stringify(item))
         //localStorage.setItem('user',res.data.userName);
