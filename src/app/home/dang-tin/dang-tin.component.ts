@@ -24,7 +24,7 @@ export class DangTinComponent implements OnInit {
     this.model.price = 0;
     this.model.rate = 1;
     this.model.reason = "";
-    this.model.userName = localStorage.getItem('user');
+    this.model.userName = this.getWithExpiry('user');
     this.motelService.postMotel(this.model).subscribe(res => {
       console.log(res.data)
       if(res.success){
@@ -32,6 +32,23 @@ export class DangTinComponent implements OnInit {
         this.router.navigateByUrl('/')
       }
     })
+  }
+  getWithExpiry(key:any) {
+    const itemStr = localStorage.getItem(key)
+    // if the item doesn't exist, return null
+    if (!itemStr) {
+      return null
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+      // If the item is expired, delete the item from storage
+      // and return null
+      localStorage.removeItem(key)
+      return null
+    }
+    return item.value
   }
 
   handleUpload(event: any) {

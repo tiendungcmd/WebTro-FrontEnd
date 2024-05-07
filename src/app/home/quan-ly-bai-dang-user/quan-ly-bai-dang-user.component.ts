@@ -22,7 +22,7 @@ export class QuanLyBaiDangUserComponent {
   constructor(private motelService: MotelService, private toastrService: ToastrService, private router: Router) {
   }
   ngOnInit(): void {
-    this.user = localStorage.getItem('user');
+    this.user = this.getWithExpiry('user');
     this.motelService.getMotel(this.user).subscribe(res => {
       this.motelResponses = res.data;
     });
@@ -30,13 +30,31 @@ export class QuanLyBaiDangUserComponent {
   hired(id: any) {
     this.motelService.hired(id).subscribe(res => {
       if (res.success) {
-        this.toastrService.success("Phê duyệt thành công!");
+        this.toastrService.success("Đã thuê!");
 
         this.motelService.getMotel(this.user).subscribe(res => {
           this.motelResponses = res.data;
         });
       }
     })
+  }
+
+  getWithExpiry(key:any) {
+    const itemStr = localStorage.getItem(key)
+    // if the item doesn't exist, return null
+    if (!itemStr) {
+      return null
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+      // If the item is expired, delete the item from storage
+      // and return null
+      localStorage.removeItem(key)
+      return null
+    }
+    return item.value
   }
 
   buttonReject(id: any) {
@@ -65,13 +83,13 @@ export class QuanLyBaiDangUserComponent {
 
   detailMotel(motelResponses: any) {
 
-    this.router.navigateByUrl('/bai-dang/' + motelResponses)
-    // this.motelService.getMotelById(motelResponses).subscribe(res => {
-    //   if (res.success) {
-    //     this.model = res.data
-    //   }
-    // });
-    //this.model = motelResponses;
+    //this.router.navigateByUrl('/bai-dang/' + motelResponses)
+    this.motelService.getMotelById(motelResponses).subscribe(res => {
+      if (res.success) {
+        this.model = res.data
+      }
+    });
+    this.model = motelResponses;
   }
 
   handleUpload(event: any) {
@@ -98,7 +116,7 @@ export class QuanLyBaiDangUserComponent {
     this.model.price = 0;
     this.model.rate = 1;
     this.model.reason = "";
-    this.model.userName = localStorage.getItem('user');
+    this.model.userName = this.getWithExpiry('user');
     this.motelService.updateMotel(this.model).subscribe(res => {
       console.log(res.data)
       if (res.success) {

@@ -23,13 +23,21 @@ export class RegisterComponent {
   register(){
     this.accountService.register(this.model).subscribe(res=>{
       if(res.success){
-        localStorage.setItem('user', JSON.stringify(res.userName));
+        const now = new Date()
+
+        // `item` is an object which contains the original value
+        // as well as the time when it's supposed to expire
+        const item = {
+          value: res.userName,
+          expiry: now.getTime() + 5000,
+        }
+        localStorage.setItem('user', JSON.stringify(item))
+       // localStorage.setItem('user', JSON.stringify(res.userName));
         this.toastr.success("Bạn đã đăng kí tài khoản thành công!")
         //this.router.navigateByUrl('/')
      //   window.location.reload();
       }else{
         this.toastr.success("Đăng kí thất bại!");
-        localStorage.removeItem('user');9
       }
     })
   }

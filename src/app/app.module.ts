@@ -20,6 +20,7 @@ import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dan
 import { TableModule } from 'primeng/table';
 import { BaiDangComponent } from './home/bai-dang/bai-dang.component';
 import { QuanLyBaiDangUserComponent } from './home/quan-ly-bai-dang-user/quan-ly-bai-dang-user.component';
+import { QuanLyTaiKhoanComponent } from './admin/quan-ly-tai-khoan/quan-ly-tai-khoan.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { QuanLyBaiDangUserComponent } from './home/quan-ly-bai-dang-user/quan-ly
     ProfileComponent,
     QuanLyBaiDangComponent,
     BaiDangComponent,
-    QuanLyBaiDangUserComponent
+    QuanLyBaiDangUserComponent,
+    QuanLyTaiKhoanComponent
   ],
   imports: [
     BrowserModule,
